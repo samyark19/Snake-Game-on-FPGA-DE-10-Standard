@@ -31,8 +31,3 @@ It outputs VGA 640x480 graphics, is controlled by a PS/2 keyboard, and displays 
 | Down Arrow | KEY[0]    | Down   |
 | Left Arrow | KEY[1]    | Left   |
 | Right Arrow| KEY[2]    | Right  |
-| SW[9]      | –         | Toggle rainbow mode |
-
-
-## 📜 License
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
