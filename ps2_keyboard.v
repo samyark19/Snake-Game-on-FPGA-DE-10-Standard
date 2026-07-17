@@ -8,18 +8,14 @@ module ps2_keyboard (
     output reg       break_code = 1'b0
 );
 
-    // Sinkronisasi 3-stage untuk menghindari metastability
     reg [2:0] clk_sync = 3'b111;
     reg [2:0] dat_sync = 3'b111;
 
-    // Deteksi falling edge PS2_CLK
     wire falling_edge = (clk_sync[2:1] == 2'b10);
 
-    // Register geser 11-bit dan penghitung bit
     reg [10:0] shift_reg = 11'h7FF;   // inisialisasi stop bit = 1
     reg [3:0]  bit_count = 4'd0;
 
-    // Flag sementara
     reg ext_flag = 1'b0;
     reg brk_flag = 1'b0;
 
