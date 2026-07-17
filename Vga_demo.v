@@ -1,6 +1,3 @@
-// Copyright (c) 2020 FPGAcademy
-// Modifikasi untuk Bendera Merah Putih
-
 `timescale 1ns / 1ns
 `default_nettype none
 
@@ -10,8 +7,7 @@ module vga_demo (CLOCK_50, KEY, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0, VGA_X, VGA_Y
 
     parameter nX = `ifdef VGA_640_480 10 `elsif VGA_320_240 9 `else 8 `endif ; // VGA x bitwidth
     parameter nY = nX - 1;
-
-    // Jumlah kolom dan baris berdasarkan resolusi
+    
     parameter COLS = `ifdef VGA_640_480 640 `elsif VGA_320_240 320 `else 160 `endif ;
     parameter ROWS = `ifdef VGA_640_480 480 `elsif VGA_320_240 240 `else 120 `endif ;
 
@@ -49,15 +45,12 @@ module vga_demo (CLOCK_50, KEY, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0, VGA_X, VGA_Y
         end
     end
 
-    // Logika Penentuan Warna (Merah di atas, Putih di bawah)
-    // ROWS >> 1 berarti membagi total baris menjadi dua (setengah layar)
     assign VGA_COLOR = (y_reg < (ROWS >> 1)) ? 24'hFF0000 : 24'hFFFFFF;
 
     assign VGA_X = x_reg;
     assign VGA_Y = y_reg;
     assign plot = 1'b1;
 
-    // Mematikan tampilan HEX (Opsional)
     assign HEX0 = 7'b1111111;
     assign HEX1 = 7'b1111111;
     assign HEX2 = 7'b1111111;
